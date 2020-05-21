@@ -13,8 +13,7 @@ for org in scc_mirror_creds:
     r = requests.get('https://scc.suse.com/connect/organizations/subscriptions',
                      auth=(org, scc_mirror_creds[org]),
                      headers={'Accept': 'application/vnd.scc.suse.com.v4+json'})
-    subs = r.json()
-    for sub in subs:
+    for sub in r.json():
         sub['org'] = org
         all_subs.append(sub)
 
